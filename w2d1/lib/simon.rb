@@ -56,7 +56,6 @@ class Simon
 
   def add_random_color
     self.seq << COLORS.sample
-    seq
   end
 
   def round_success_message
@@ -78,9 +77,10 @@ class Simon
 
   def play_again
     print "Play again? (y/n): "
-    
+
     input = gets.chomp.downcase
-    input == "y" ? play : "Goodbye!"
+    play if input == "y"
+    puts "Goodbye!"
   end
 
   def print_sequence

@@ -77,7 +77,6 @@ class Simon
 
   def play_again
     print "Play again? (y/n): "
-
     input = gets.chomp.downcase
     play if input == "y"
     puts "Goodbye!"

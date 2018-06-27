@@ -12,3 +12,29 @@ def sluggish_octopus(fish)
   end
   longest_fish
 end
+
+#O(n log n)
+def dominant_octopus(fish)
+  merge_sort(fish).last
+end
+
+def merge_sort(arr)
+  return arr if arr.length <= 1
+  mid = arr.length / 2
+  lower = merge_sort(arr[0...mid])
+  upper = merge_sort(arr[mid..-1])
+
+  merge(lower, upper)
+end
+
+def merge(left, right)
+  result = []
+  until left.empty? || right.empty?
+    if left.first.length < right.first.length
+      result << left.shift
+    else
+      result << right.shift
+    end
+  end
+  result + left + right
+end

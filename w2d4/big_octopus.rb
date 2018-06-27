@@ -13,7 +13,7 @@ def sluggish_octopus(fish)
   longest_fish
 end
 
-#O(n log n)
+# O(n log n)
 def dominant_octopus(fish)
   merge_sort(fish).last
 end
@@ -37,4 +37,13 @@ def merge(left, right)
     end
   end
   result + left + right
+end
+
+# O(n)
+def clever_octopus(fish)
+  longest = ""
+  fish.each do |fish|
+    longest = fish if longest.length < fish.length
+  end
+  longest
 end

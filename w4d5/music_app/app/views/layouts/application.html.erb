@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Steven's Music App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <button>
+        <% if logged_in? %>
+          <% root = bands_url %>
+        <% else %>
+          <% root = root_url %>
+        <% end %>
+        <a href="<%= root %>">Steven's Music App</a>
+      </button>
+      <nav>
+        <% if current_user %>
+        Logged in as: <%= current_user.email %>
+        <form id="logout_form" action=" <%= session_url %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        </form>
+        <button type="submit" form="logout_form">Log out</button>
+        <% else %>
+        <button type="submit" form="login_form">Log in</button>
+        <button type="submit" form="signup_form">Sign up</button>
+
+        <form id="login_form" action=" <%= new_session_url %>" method="get">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        </form>
+
+        <form id="signup_form" action=" <%= new_user_url %>" method="get">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        </form>
+
+        <% end %>
+      </nav>
+    </header>
+    <div class="main_content">
+      <%= yield %>
+    </div>
+  </body>
+  <footer>
+    <%= yield :footer %>
+  </footer>
+</html>

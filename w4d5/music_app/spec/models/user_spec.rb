@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
       expect(user.session_token).to_not eq(token)
     end
     it 'returns the new session token' do
-      expect(user.reset_session_token!).to eq(user.session_token))
+      expect(user.reset_session_token!).to eq(user.session_token)
     end
   end
 

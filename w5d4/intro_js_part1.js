@@ -54,22 +54,60 @@ function mysteryScoping5() {
 //SyntaxError: Identifier 'x' has already been declared
 
 function madLib(verb, adjective, noun) {
-  console.log(`We shall ${verb.toUpperCase()} the ${adjective.toUpperCase()} ${noun.toUpperCase()}.`)
+  console.log(`We shall ${verb.toUpperCase()} the ${adjective.toUpperCase()} ${noun.toUpperCase()}.`);
 }
 
 function isSubstring(searchString, subString) {
-  return searchString.includes(subString)
+  return searchString.includes(subString);
 }
 
 //Phase 2 - JS Looping Constructs
 function fizzBuzz(array) {
-
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    if ((array[i] % 3 === 0) && (array[i] % 5 === 0)) {
+    } else if (array[i] % 3 === 0) {
+      result.push(array[i]);
+    } else if (array[i] % 5 === 0) {
+      result.push(array[i]);
+    }
+  }
+  return result;
 }
 
 function isPrime(number) {
+  if (number < 2) {
+    return false
+  } else {
+    for (let i = 2; i < number; i++) {
+      if (number % i == 0) {
+        return false
+      }
+    }
+  }
+  return true
+}
 
+function firstNPrimes(n) {
+  let count = 0;
+  let result = [];
+  let number = 1;
+
+  while (count < n) {
+    if (isPrime(number)) {
+      result.push(number);
+      count++;
+    }
+    number++;
+  }
+  return result;
 }
 
 function sumOfNPrimes(n) {
-
+  let primes = firstNPrimes(n);
+  let sum = 0;
+  for (let i = 0; i < primes.length; i++) {
+    sum += primes[i];
+  }
+  return sum;
 }

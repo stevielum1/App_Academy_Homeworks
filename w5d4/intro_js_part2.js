@@ -48,3 +48,17 @@ Elephant.paradeHelper = function(elephant) {
 herd.forEach(Elephant.paradeHelper);
 
 //Phase 4 Closures
+function dinerBreakfast() {
+  let order = "cheesy scrambled eggs";
+
+  function addToOrder(item) {
+      order += ` and ${item}`;
+  }
+
+  return function (item) {
+    if (item) {
+      addToOrder(item);
+    }
+    return "I'd like " + `${order}` + " please";
+  };
+}

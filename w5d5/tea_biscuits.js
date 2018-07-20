@@ -6,8 +6,6 @@ const reader = readline.createInterface({
 });
 
 function teaAndBiscuits () {
-  let first, second;
-
   reader.question("Do you want some tea?\n", (response) => {
     console.log(`You said ${response}\n`);
     reader.question("Do you want some biscuits?\n", (response2) => {
